@@ -16,9 +16,9 @@ public class Support
 
 
   //檢查性別
-  public static boolean check_sex(String Intput_sex)
+  public static boolean check_gender(String Intput_gender)
   {
-    if(!Intput_sex.equals("male") && !Intput_sex.equals("female"))
+    if(!Intput_gender.equals("male") && !Intput_gender.equals("female"))
     {
       System.out.println("  性別輸入錯誤");
       return false;

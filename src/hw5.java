@@ -3,11 +3,9 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import chicken.*;
 
-public class hw5
-{
-  public static void main(String[] args)
-  {
-    int Again = 1;
+public class hw5{
+  public static void main(String[] args){
+    int again = 1;
 
     ArrayList<chicken> chicks = new ArrayList<chicken>();
     Scanner x = new Scanner(System.in);
@@ -26,29 +24,24 @@ public class hw5
     System.out.println("   \\\\ 遊戲開始 //");
 
 
-    do
-    {
-      try
-      {
+    do{
+      try{
         System.out.println("");
         System.out.print(" ☆請輸入指令:");
         command = x.nextLine();
         String [] command_split = command.split(" ");
 
-        switch(command_split[0])
-        {
+        switch(command_split[0]){
           //產生新小雞
           case "hatch":
             //檢查指令長度
-            if(command_split.length != 4)
-            {
+            if(command_split.length != 4){
               System.out.println("  指令長度錯誤");
               continue;
             }
 
             //執行
-            else
-            {
+            else{
               Command.hatch(command_split[1],command_split[2],command_split[3],chicks);
               break;
             }
@@ -57,15 +50,13 @@ public class hw5
           //餵食小雞
           case "feed":
             //檢查指令長度
-            if(command_split.length != 2)
-            {
+            if(command_split.length != 2){
               System.out.println("  指令長度錯誤");
               continue;
             }
 
             //執行
-            else
-            {
+            else{
               Command.feed(command_split[1],chicks);
               break;
             }
@@ -75,15 +66,13 @@ public class hw5
           case "danceWith":
 
             //檢查指令長度
-            if(command_split.length != 2)
-            {
+            if(command_split.length != 2){
               System.out.println("  指令長度錯誤");
               continue;
             }
 
             //執行
-            else
-            {
+            else{
               Command.danceWith(command_split[1],chicks);
               break;
             }
@@ -93,15 +82,13 @@ public class hw5
           case "picnic":
 
             //檢查指令長度
-            if(command_split.length != 2)
-            {
+            if(command_split.length != 2){
               System.out.println("  輸入錯誤");
               continue;
             }
 
             //執行
-            else
-            {
+            else{
               Command.picnic(command_split[1],chicks);
               break;
             }
@@ -110,15 +97,13 @@ public class hw5
           case "fight":
 
             //檢查指令長度
-            if(command_split.length != 3)
-            {
+            if(command_split.length != 3){
               System.out.println("  指令長度錯誤");
               continue;
             }
 
             //執行
-            else
-            {
+            else{
               Command.fight(command_split[1],command_split[2],chicks);
               break;
             }
@@ -129,15 +114,13 @@ public class hw5
           case "mate":
 
             //檢查指令長度
-            if(command_split.length != 3)
-            {
+            if(command_split.length != 3){
               System.out.println("  指令長度錯誤");
               continue;
             }
 
             //執行
-            else
-            {
+            else{
               Command.mate(command_split[1],command_split[2],chicks);
               break;
             }
@@ -146,15 +129,13 @@ public class hw5
           //生蛋
           case "layEgg":
             //檢查指令長度
-            if(command_split.length != 2)
-            {
+            if(command_split.length != 2){
               System.out.println("  輸入錯誤");
               continue;
             }
 
             //執行
-            else
-            {
+            else{
               Command.layEgg(command_split[1],chicks);
               break;
             }
@@ -164,15 +145,13 @@ public class hw5
           case "work":
 
             //檢查指令長度
-            if(command_split.length != 2)
-            {
+            if(command_split.length != 2){
               System.out.println("  指令長度錯誤");
               continue;
             }
 
             //執行
-            else
-            {
+            else{
               Command.work(command_split[1],chicks);
               break;
             }
@@ -182,15 +161,13 @@ public class hw5
           case "query":
 
             //檢查指令長度
-            if(command_split.length != 1)
-            {
+            if(command_split.length != 1){
               System.out.println("  指令長度錯誤");
               continue;
             }
 
             //執行
-            else
-            {
+            else{
               Command.query(chicks);
               break;
             }
@@ -198,16 +175,13 @@ public class hw5
 
           //查詢分數
           case "checkpoint":
-
             //檢查指令長度
-            if(command_split.length != 1)
-            {
+            if(command_split.length != 1){
               System.out.println("  指令長度錯誤");
               continue;
             }
             //執行
-            else
-            {
+            else{
               Command.checkpoint(chicks);
               break;
             }
@@ -215,16 +189,13 @@ public class hw5
 
           //呼叫指令集
           case "help":
-
             //檢查指令長度
-            if(command_split.length != 1)
-            {
+            if(command_split.length != 1){
               System.out.println("  指令長度錯誤");
               continue;
             }
             //執行
-            else
-            {
+            else{
               Command.help(chicks);
               break;
             }
@@ -232,16 +203,13 @@ public class hw5
 
           //存檔
           case "save":
-
             //檢查指令長度
-            if(command_split.length != 2)
-            {
+            if(command_split.length != 2){
               System.out.println("  指令長度錯誤");
               continue;
             }
             //執行
-            else	
-            {
+            else{
               Command.save(command_split[1],chicks);
               break;
             }
@@ -249,16 +217,13 @@ public class hw5
 
           //讀檔
           case "load":
-
             //檢查指令長度
-            if(command_split.length != 2)
-            {
+            if(command_split.length != 2){
               System.out.println("  指令長度錯誤");
               continue;
             }
             //執行
-            else	
-            {
+            else{
               Command.load	(command_split[1],chicks);
               break;
             }
@@ -266,16 +231,14 @@ public class hw5
 
           //離開
           case "exit":
-
             //檢查指令長度
-            if(command_split.length != 1)
-            {
+            if(command_split.length != 1){
               System.out.println("  指令長度錯誤");
               continue;
             }
 
             System.out.println("   \\\\遊戲結束//");
-            Again = 0;
+            again = 0;
             break;
 
           default:
@@ -284,16 +247,13 @@ public class hw5
         }
       }
 
-      catch(ArrayIndexOutOfBoundsException e)
-      {
+      catch(ArrayIndexOutOfBoundgenderception e){
         System.out.println("  指令錯誤");
         continue;
       }
-    }while(Again == 1);
-
+    }while(again == 1);
     //結算分數
     Command.checkpoint(chicks);
-
   }
 
 }

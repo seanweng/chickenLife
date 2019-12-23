@@ -1,21 +1,17 @@
 package chicken;
 
-public class cook extends chicken
-{
-  public cook(String Input_name, String Input_sex, String Input_type)
-  {
-    super(Input_name, Input_sex, Input_type);
+public class cook extends chicken{
+  public cook(String Input_name, String Input_gender, String Input_type){
+    super(Input_name, Input_gender, Input_type);
     hp = 70;
     happiness = 95;
   }
 
   //工作
   //改變data
-  public int work(int food)
-  {
+  public int work(int food){
     //存活與否
-    if(condition == 1)
-    {
+    if(condition == 1){
       food = food + (hp*3 + happiness*5)/4;
       hp = hp - 25;
       happiness = happiness - 20;
@@ -23,40 +19,31 @@ public class cook extends chicken
       return food;
     }
 
-    else
-    {
+    else{
       return food;
     }
   }
 
 
   //回傳食物增加量
-  public int work()
-  {
+  public int work(){
     int food = 0;
 
     //存活與否
-    if(condition == 1)
-    {
+    if(condition == 1){
       food = (hp*3 + happiness*5)/4;
       return food;
     }
 
-    else
-    {
+    else{
       return food;
     }
   }
 
 
   //顯示訊息
-  public void get_Message()
-  {
+  public void get_Message(){
      super.get_Message();
      System.out.println(" ");
   }
-
-
-
-
 }
