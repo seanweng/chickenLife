@@ -1,6 +1,6 @@
 package chicken;
 
-public class chicken{
+public class Chicken{
   protected String name;
   protected String gender;
   protected String type; // "cook" or "gatherer" or "healer"
@@ -11,7 +11,7 @@ public class chicken{
 
 
   //constructor
-  public chicken(String Input_name, String Input_gender, String Input_type){
+  public Chicken(String Input_name, String Input_gender, String Input_type){
     name = Input_name;
     gender = Input_gender;
     type = Input_type;
@@ -20,40 +20,39 @@ public class chicken{
 
 
   //取得姓名
-  public String get_name(){
+  public String getName(){
     return name;
   }
 
 
   //取得性別
-  public String get_gender(){
+  public String getGender(){
     return gender;
   }
 
 
   //取得類別
-  public String get_type(){
+  public String getType(){
     return type;
   }
 
 
   //取得狀態
-  public int get_condition(){
+  public int getCondition(){
     return condition;
   }
 
 
   //取得體力
-  public int get_hp(){
+  public int getHp(){
     return hp;
   }
 
 
   //取得快樂值
-  public int get_happiness(){
+  public int getHappiness(){
     return happiness;
   }
-
 
 
   //餵食
@@ -78,7 +77,7 @@ public class chicken{
     }
   }
   //回傳食物需求量
-  public int feed_require(){
+  public int feedRequire(){
     if(gender.equals("male")){
       return 30;
     }
@@ -88,8 +87,6 @@ public class chicken{
     }
 
   }
-
-
 
   //跳舞
   public void danceWith(){
@@ -126,7 +123,7 @@ public class chicken{
     }
   }
   //回傳食物需求量
-  public int picnic_require(){
+  public int picnicRequire(){
     if(gender.equals("male")){
       return 50;
     }
@@ -134,9 +131,6 @@ public class chicken{
       return 40;
     }
   }
-
-
-
 
   //打架
   public void fight(chicken Input_object){
@@ -242,7 +236,7 @@ public class chicken{
 
 
   //檢查姓名
-  public int check_name(String Input_name){
+  public int checkName(String Input_name){
     if(Input_name.equals(name)){
       return 1;
     }
@@ -253,7 +247,7 @@ public class chicken{
 
 
   //顯示訊息
-  public void get_Message(){
+  public void getMessage(){
     System.out.println("  名字:" + name);
     System.out.println("  性別:" + gender);
     System.out.println("  類型:" + type);

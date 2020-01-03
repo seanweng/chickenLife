@@ -2,7 +2,7 @@ public class Support
 {
 
   //檢查姓名
-  public static boolean check_name(String Intput_name,String Key_name)
+  public static boolean checkName(String Intput_name,String Key_name)
   {
     if(Intput_name.equals(Key_name))
     {
@@ -16,7 +16,7 @@ public class Support
 
 
   //檢查性別
-  public static boolean check_gender(String Intput_gender)
+  public static boolean checkGender(String Intput_gender)
   {
     if(!Intput_gender.equals("male") && !Intput_gender.equals("female"))
     {
@@ -31,7 +31,7 @@ public class Support
 
 
   //檢查類別
-  public static boolean check_type(String Intput_type)
+  public static boolean checkType(String Intput_type)
   {
     if(!Intput_type.equals("gatherer") && !Intput_type.equals("cook") && !Intput_type.equals("healer"))
     {
@@ -46,7 +46,7 @@ public class Support
 
 
   //尋找相同姓名
-  public static int find_name(String Intput_name,String Key_name,int Label)
+  public static int findName(String Intput_name,String Key_name,int Label)
   {
     if(check_name(Intput_name,Key_name))
     {
@@ -57,7 +57,4 @@ public class Support
       return -1;
     }
   }
-
-
-
 }

@@ -1,9 +1,9 @@
 package chicken;
 
-public class gatherer extends chicken{
+public class Gatherer extends Chicken{
   private int endurance = 0;
 
-  public gatherer(String Input_name, String Input_gender, String Input_type){
+  public Gatherer(String Input_name, String Input_gender, String Input_type){
     super(Input_name, Input_gender, Input_type);
     hp = 90;
     happiness = 85;
@@ -50,7 +50,7 @@ public class gatherer extends chicken{
   }
 
   //取負重力值
-  public int set_endurance(int now_hp){
+  public int setEndurance(int now_hp){
     endurance = now_hp*3/2;
     if(endurance<=0){
       endurance = 0;
@@ -59,7 +59,7 @@ public class gatherer extends chicken{
   }
 
   //顯示訊息
-  public void get_Message(){
+  public void getMessage(){
      super.get_Message();
      System.out.println("  負重力:" + set_endurance(hp));
      System.out.println(" ");

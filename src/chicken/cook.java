@@ -1,7 +1,7 @@
 package chicken;
 
-public class cook extends chicken{
-  public cook(String Input_name, String Input_gender, String Input_type){
+public class Cook extends Chicken{
+  public Cook(String Input_name, String Input_gender, String Input_type){
     super(Input_name, Input_gender, Input_type);
     hp = 70;
     happiness = 95;
@@ -42,7 +42,7 @@ public class cook extends chicken{
 
 
   //Εγ₯ά°T®§
-  public void get_Message(){
+  public void getMessage(){
      super.get_Message();
      System.out.println(" ");
   }

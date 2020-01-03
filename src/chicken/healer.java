@@ -1,6 +1,6 @@
 package chicken;
 
-public class healer extends chicken{
+public class Healer extends Chicken{
   private int hp_increase = 0;
   public healer(String Input_name, String Input_gender, String Input_type){
     super(Input_name, Input_gender, Input_type);
@@ -36,7 +36,7 @@ public class healer extends chicken{
   }
 
   //Εγ₯ά°T®§
-  public void get_Message(){
+  public void getMessage(){
      super.get_Message();
      System.out.println(" ");
   }
