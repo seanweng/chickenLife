@@ -7,7 +7,7 @@ public class Gatherer extends Chicken{
     super(Input_name, Input_gender, Input_type);
     hp = 90;
     happiness = 85;
-    set_endurance(hp);
+    setEndurance(hp);
   }
 
 
@@ -34,7 +34,7 @@ public class Gatherer extends Chicken{
 
     //存活與否	
     if(condition == 1){
-      set_endurance((hp - 30));
+      setEndurance((hp - 30));
       increase_ingredient = (hp*4 + happiness*2)/3;
       if(increase_ingredient <= endurance){
         return increase_ingredient;
@@ -60,8 +60,8 @@ public class Gatherer extends Chicken{
 
   //顯示訊息
   public void getMessage(){
-     super.get_Message();
-     System.out.println("  負重力:" + set_endurance(hp));
+     super.getMessage();
+     System.out.println("  負重力:" + setEndurance(hp));
      System.out.println(" ");
   }
 

@@ -2,7 +2,7 @@ package chicken;
 
 public class Healer extends Chicken{
   private int hp_increase = 0;
-  public healer(String Input_name, String Input_gender, String Input_type){
+  public Healer(String Input_name, String Input_gender, String Input_type){
     super(Input_name, Input_gender, Input_type);
     hp = 60;
     happiness = 90;
@@ -25,7 +25,7 @@ public class Healer extends Chicken{
   }
 
   //治療
-  public void heal(chicken A){
+  public void heal(Chicken A){
     //存活與否
     if(condition == 1){
       hp_increase = hp/2;
@@ -37,7 +37,7 @@ public class Healer extends Chicken{
 
   //顯示訊息
   public void getMessage(){
-     super.get_Message();
+     super.getMessage();
      System.out.println(" ");
   }
 }

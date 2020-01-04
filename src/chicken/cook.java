@@ -43,7 +43,7 @@ public class Cook extends Chicken{
 
   //Εγ₯ά°T®§
   public void getMessage(){
-     super.get_Message();
+     super.getMessage();
      System.out.println(" ");
   }
 }

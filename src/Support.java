@@ -48,7 +48,7 @@ public class Support
   //´M§ä¬Û¦P©m¦W
   public static int findName(String Intput_name,String Key_name,int Label)
   {
-    if(check_name(Intput_name,Key_name))
+    if(checkName(Intput_name,Key_name))
     {
       return Label;
     }

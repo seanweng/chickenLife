@@ -5,39 +5,38 @@ import chicken.*;
 
 public class ChickenCoop{
 
-  ArrayList<Chicken> chicken = new ArrayList<Chicken>();
-  int chickenNum = 0;
-  int ingredient = 100;
-  int food = 80;
-  int egg = 0;
-
+  private ArrayList<Chicken> chicken = new ArrayList<Chicken>();;
+  private int chickenNum = 0;
+  private int ingredient = 100;
+  private int food = 80;
+  private int egg = 0;
 
 
   //產生新小雞
-  public static void hatch(String Intput_name,String Intput_gender,String Intput_type){
+  public void hatch(String Intput_name,String Intput_gender,String Intput_type){
     if(chickenNum > 0){
       boolean judge = true;
       for(int i = 0; i < chickenNum; i++){
-        judge = Support.check_name(Intput_name,chicken.get(i).getName());
+        judge = Support.checkName(Intput_name,chicken.get(i).getName());
         if(judge){
           System.out.println("  姓名重複");
           i = chickenNum;
         }
       }
       if(!judge){
-        if(Support.check_gender(Intput_gender)){
-          if(Support.check_type(Intput_type)){
+        if(Support.checkGender(Intput_gender)){
+          if(Support.checkType(Intput_type)){
             switch(Intput_type){
               case "cook":
-               chicken.add(new cook(Intput_name, Intput_gender, Intput_type));
+               chicken.add(new Cook(Intput_name, Intput_gender, Intput_type));
                break;
 
               case "gatherer":
-               chicken.add(new gatherer(Intput_name, Intput_gender, Intput_type));
+               chicken.add(new Gatherer(Intput_name, Intput_gender, Intput_type));
                break;
 
               case "healer":
-               chicken.add(new healer(Intput_name, Intput_gender, Intput_type));
+               chicken.add(new Healer(Intput_name, Intput_gender, Intput_type));
                break;
             }
             System.out.println(" ★一隻小雞誕生了");
@@ -49,8 +48,8 @@ public class ChickenCoop{
     }
 
     else{
-      if(Support.check_gender(Intput_gender)){
-        if(Support.check_type(Intput_type)){
+      if(Support.checkGender(Intput_gender)){
+        if(Support.checkType(Intput_type)){
           switch(Intput_type){
             case "cook":
              chicken.add(new Cook(Intput_name, Intput_gender, Intput_type));
@@ -62,6 +61,7 @@ public class ChickenCoop{
 
             case "healer":
              chicken.add(new Healer(Intput_name, Intput_gender, Intput_type));
+             System.out.println("sss");
              break;
           }
           System.out.println(" ★一隻小雞誕生了");
@@ -74,7 +74,7 @@ public class ChickenCoop{
 
 
   //餵食
-  public static void feed(String Intput_name){
+  public void feed(String Intput_name){
     if(chickenNum > 0){
       int Label = -1;
       for(int i = 0; i < chickenNum; i++){
@@ -88,7 +88,7 @@ public class ChickenCoop{
         if(chicken.get(Label).getCondition() == 0){
           System.out.println("  "+ chicken.get(Label).getName() +"已死亡");
         }
-        if(chicken.get(Label).feed_require() < food){
+        if(chicken.get(Label).feedRequire() < food){
           food = food - chicken.get(Label).feed();
           System.out.println("  食材存量:" + ingredient);
           System.out.println("  食物存量:" + food);
@@ -111,7 +111,7 @@ public class ChickenCoop{
 
 
   //跳舞
-  public static void danceWith(String Intput_name){
+  public void danceWith(String Intput_name){
     if(chickenNum > 0){
       int Label = -1;
       for(int i = 0; i < chickenNum; i++){
@@ -140,7 +140,7 @@ public class ChickenCoop{
 
 
   //野餐
-  public static void picnic(String Intput_name){
+  public void picnic(String Intput_name){
     if(chickenNum > 0){
       int Label = -1;
       for(int i = 0; i < chickenNum; i++){
@@ -156,7 +156,7 @@ public class ChickenCoop{
           System.out.println("  "+ chicken.get(Label).getName() +"已死亡");
         }
         else{
-          if(chicken.get(Label).picnic_require() < food){
+          if(chicken.get(Label).picnicRequire() < food){
             food = food - chicken.get(Label).picnic();
             System.out.println("  食材存量:" + ingredient);
             System.out.println("  食物存量:" + food);
@@ -177,7 +177,7 @@ public class ChickenCoop{
   }
 
   //打架
-  public static void fight(String Intput_name_1,String Intput_name_2){
+  public void fight(String Intput_name_1,String Intput_name_2){
     if(chickenNum > 1){
       int Label_1 = -1;
       int Label_2 = -1;
@@ -228,7 +228,7 @@ public class ChickenCoop{
 
 
   //求偶
-  public static void mate(String Intput_name_1,String Intput_name_2){
+  public void mate(String Intput_name_1,String Intput_name_2){
     if(chickenNum > 1){
       int Label_1 = -1;
       int Label_2 = -1;
@@ -256,7 +256,7 @@ public class ChickenCoop{
           System.out.println("  "+ chicken.get(Label_2).getName() +"已死亡");
         }
         else{
-          chicken.mate(chicken.get(Label_1),chicken.get(Label_2));
+          Chicken.mate(chicken.get(Label_1),chicken.get(Label_2));
           chicken.get(Label_1).getMessage();
           chicken.get(Label_2).getMessage();
         }
@@ -279,7 +279,7 @@ public class ChickenCoop{
 
 
   //生蛋
-  public static void layEgg(String Intput_name){
+  public void layEgg(String Intput_name){
     if(chickenNum > 0){
       int Label = -1;
       for(int i = 0; i < chickenNum; i++){
@@ -316,7 +316,7 @@ public class ChickenCoop{
 
 
   //工作
-  public static void work(String Intput_name){
+  public void work(String Intput_name){
     if(chickenNum > 0){
       int Label = -1;
       for(int i = 0; i < chickenNum; i++){
@@ -331,8 +331,8 @@ public class ChickenCoop{
           System.out.println("  "+ chicken.get(Label).getName() +"已死亡");
         }
         else{
-          switch(chicken.get(Label).get_type()){
-            case "gatherer":
+          switch(chicken.get(Label).getType()){
+            case "Gatherer":
               System.out.println("  食材增加:"+ chicken.get(Label).work());
               ingredient = chicken.get(Label).work(ingredient);
               System.out.println("  食材存量:" + ingredient);
@@ -341,7 +341,7 @@ public class ChickenCoop{
               chicken.get(Label).getMessage();
               break;
 
-            case "cook":
+            case "Cook":
               if(ingredient > 60){
                 ingredient = ingredient - 60;
                 System.out.println("  食物增加:"+ chicken.get(Label).work());
@@ -356,7 +356,7 @@ public class ChickenCoop{
               }
               break;
 
-            case "healer":
+            case "Healer":
               for(int i = 0; i < chickenNum; i++){
                 if(i == Label){
                   continue;
@@ -380,7 +380,7 @@ public class ChickenCoop{
 
 
   //查詢
-  public static void query(){
+  public void query(){
     System.out.println("  食材存量:" + ingredient);
     System.out.println("  食物存量:" + food);
     System.out.println("");
@@ -394,26 +394,26 @@ public class ChickenCoop{
 
 
   //查詢分數
-  public static void checkScore(){
+  public void checkScore(){
     int now_point = 0;
     int now_totalpoint = 0;
 
     now_totalpoint = egg*300;
 
     for(int i = 0; i < chickenNum; i++){
-      if(chicken.get(i).get_hp() == 100 && chicken.get(i).get_happiness() == 100){
+      if(chicken.get(i).getHp() == 100 && chicken.get(i).getHappiness() == 100){
         now_point = 1000;
       }
 
-      else if(chicken.get(i).get_hp() >= 51 && chicken.get(i).get_happiness() > 0){
+      else if(chicken.get(i).getHp() >= 51 && chicken.get(i).getHappiness() > 0){
         now_point = 500;
       }
 
-      else if(chicken.get(i).get_hp() > 0 && chicken.get(i).get_happiness() > 0){
+      else if(chicken.get(i).getHp() > 0 && chicken.get(i).getHappiness() > 0){
         now_point = 100;
       }
 
-      else if(chicken.get(i).get_hp() == 0 && chicken.get(i).get_happiness() == 0){
+      else if(chicken.get(i).getHp() == 0 && chicken.get(i).getHappiness() == 0){
         now_point = -500;
       }
       else{
@@ -428,7 +428,7 @@ public class ChickenCoop{
 
 
   //呼叫指令集
-  public static void help(){
+  public void help(){
     System.out.println(" 《指令集》");
     System.out.println("  1.產生新小雞:     hatch [名字] [性別] [類別] ");
     System.out.println("  2.餵食:           feed [雞的名字]");
@@ -439,7 +439,7 @@ public class ChickenCoop{
     System.out.println("  7.求偶:           mate [名字 A] [名字 B]");
     System.out.println("  8.生蛋:           layEgg [雞的名字]");
     System.out.println("  9.查詢:           query");
-    System.out.println("  10.查詢分數:      checkpoint");
+    System.out.println("  10.查詢分數:      checkScore");
     System.out.println("  11.呼叫指令集:    help");
     System.out.println("  12.存檔:          save [檔名] ");
     System.out.println("  13.讀檔:          load [檔名] ");
@@ -447,7 +447,7 @@ public class ChickenCoop{
   }
 
   //存檔
-  public static void save(String filename){
+  public void save(String filename){
     try{
       filename = filename+ ".txt";
       File file = new File(filename);
@@ -471,13 +471,13 @@ public class ChickenCoop{
         writer.newLine();
         writer.write(chicken.get(i).getGender());
         writer.newLine();
-        writer.write(chicken.get(i).get_type());
+        writer.write(chicken.get(i).getType());
         writer.newLine();
         writer.write(Integer.toString(chicken.get(i).getCondition()));
         writer.newLine();
-        writer.write(Integer.toString(chicken.get(i).get_hp()));
+        writer.write(Integer.toString(chicken.get(i).getHp()));
         writer.newLine();
-        writer.write(Integer.toString(chicken.get(i).get_happiness()));
+        writer.write(Integer.toString(chicken.get(i).getHappiness()));
         writer.newLine();
       }
       writer.close();
@@ -490,7 +490,7 @@ public class ChickenCoop{
   }
 
   //讀檔
-  public static void load(String filename){
+  public void load(String filename){
     //清空Arraylist
     if(chickenNum != 0){
       for(int i = (chickenNum-1); i >= 0; i--){ 
@@ -501,10 +501,10 @@ public class ChickenCoop{
     try{
       String getName = null;
       String getGender = null;
-      String get_type = null;
+      String getType = null;
       int getCondition = 0;
-      int get_hp = 0;
-      int get_happiness = 0;
+      int getHp = 0;
+      int getHappiness = 0;
 
       filename = filename + ".txt";
       File file = new File(filename);
@@ -522,25 +522,25 @@ public class ChickenCoop{
       for(int i = 0; i < chickenNum; i++){
         getName = reader.readLine();
         getGender = reader.readLine();
-        get_type = reader.readLine();
+        getType = reader.readLine();
         getCondition = Integer.parseInt(reader.readLine());
-        get_hp = Integer.parseInt(reader.readLine());
-        get_happiness = Integer.parseInt(reader.readLine());            
+        getHp = Integer.parseInt(reader.readLine());
+        getHappiness = Integer.parseInt(reader.readLine());            
 
-        switch(get_type){
-          case "gatherer":
-            chicken.add(new gatherer(getName, getGender, get_type));
-            chicken.get(i).set_all_int(getCondition, get_hp, get_happiness);
+        switch(getType){
+          case "Gatherer":
+            chicken.add(new Gatherer(getName, getGender, getType));
+            chicken.get(i).set_all_int(getCondition, getHp, getHappiness);
             break;
 
-          case "cook":
-            chicken.add(new cook(getName, getGender, get_type));
-            chicken.get(i).set_all_int(getCondition, get_hp, get_happiness);
+          case "Cook":
+            chicken.add(new Cook(getName, getGender, getType));
+            chicken.get(i).set_all_int(getCondition, getHp, getHappiness);
             break;
 
-          case "healer":
-            chicken.add(new healer(getName, getGender, get_type));
-            chicken.get(i).set_all_int(getCondition, get_hp, get_happiness);
+          case "Healer":
+            chicken.add(new Healer(getName, getGender, getType));
+            chicken.get(i).set_all_int(getCondition, getHp, getHappiness);
             break;
         }
       }

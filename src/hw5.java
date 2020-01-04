@@ -7,7 +7,9 @@ public class hw5{
   public static void main(String[] args){
     int again = 1;
 
-    ArrayList<chicken> chicks = new ArrayList<chicken>();
+    ChickenCoop chickenCoop = new ChickenCoop();
+
+    ArrayList<Chicken> chicken = new ArrayList<Chicken>();
     Scanner x = new Scanner(System.in);
     String command;
 
@@ -42,7 +44,7 @@ public class hw5{
 
             //執行
             else{
-              Command.hatch(command_split[1],command_split[2],command_split[3],chicks);
+              chickenCoop.hatch(command_split[1],command_split[2],command_split[3]);
               break;
             }
             
@@ -57,7 +59,7 @@ public class hw5{
 
             //執行
             else{
-              Command.feed(command_split[1],chicks);
+              chickenCoop.feed(command_split[1]);
               break;
             }
 
@@ -73,7 +75,7 @@ public class hw5{
 
             //執行
             else{
-              Command.danceWith(command_split[1],chicks);
+              chickenCoop.danceWith(command_split[1]);
               break;
             }
 
@@ -89,7 +91,7 @@ public class hw5{
 
             //執行
             else{
-              Command.picnic(command_split[1],chicks);
+              chickenCoop.picnic(command_split[1]);
               break;
             }
 
@@ -104,7 +106,7 @@ public class hw5{
 
             //執行
             else{
-              Command.fight(command_split[1],command_split[2],chicks);
+              chickenCoop.fight(command_split[1],command_split[2]);
               break;
             }
 
@@ -121,7 +123,7 @@ public class hw5{
 
             //執行
             else{
-              Command.mate(command_split[1],command_split[2],chicks);
+              chickenCoop.mate(command_split[1],command_split[2]);
               break;
             }
 
@@ -136,7 +138,7 @@ public class hw5{
 
             //執行
             else{
-              Command.layEgg(command_split[1],chicks);
+              chickenCoop.layEgg(command_split[1]);
               break;
             }
 
@@ -152,7 +154,7 @@ public class hw5{
 
             //執行
             else{
-              Command.work(command_split[1],chicks);
+              chickenCoop.work(command_split[1]);
               break;
             }
 
@@ -168,13 +170,13 @@ public class hw5{
 
             //執行
             else{
-              Command.query(chicks);
+              chickenCoop.query();
               break;
             }
 
 
           //查詢分數
-          case "checkpoint":
+          case "checkScore":
             //檢查指令長度
             if(command_split.length != 1){
               System.out.println("  指令長度錯誤");
@@ -182,7 +184,7 @@ public class hw5{
             }
             //執行
             else{
-              Command.checkpoint(chicks);
+              chickenCoop.checkScore();
               break;
             }
 
@@ -196,7 +198,7 @@ public class hw5{
             }
             //執行
             else{
-              Command.help(chicks);
+              chickenCoop.help();
               break;
             }
 
@@ -210,7 +212,7 @@ public class hw5{
             }
             //執行
             else{
-              Command.save(command_split[1],chicks);
+              chickenCoop.save(command_split[1]);
               break;
             }
 
@@ -224,7 +226,7 @@ public class hw5{
             }
             //執行
             else{
-              Command.load	(command_split[1],chicks);
+              chickenCoop.load(command_split[1]);
               break;
             }
 
@@ -247,13 +249,13 @@ public class hw5{
         }
       }
 
-      catch(ArrayIndexOutOfBoundgenderception e){
+      catch(ArrayIndexOutOfBoundsException e){
         System.out.println("  指令錯誤");
         continue;
       }
     }while(again == 1);
     //結算分數
-    Command.checkpoint(chicks);
+    chickenCoop.checkScore();
   }
 
 }

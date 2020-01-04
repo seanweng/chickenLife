@@ -133,7 +133,7 @@ public class Chicken{
   }
 
   //打架
-  public void fight(chicken Input_object){
+  public void fight(Chicken Input_object){
     //存活與否
     if(condition == 1){
       if(hp > Input_object.hp){
@@ -276,7 +276,7 @@ public class Chicken{
   }
 
   //求偶
-  public static void mate(chicken A,chicken B){
+  public static void mate(Chicken A,Chicken B){
     A.hp = A.hp - 50;
     B.hp = B.hp - 50;
 
@@ -288,7 +288,7 @@ public class Chicken{
   }
 
   //治療
-  public void heal(chicken A){
+  public void heal(Chicken A){
   }
 
   //設定int data
