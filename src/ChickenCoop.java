@@ -12,369 +12,150 @@ public class ChickenCoop{
   private int egg = 0;
 
 
+  //搜尋小雞
+  public Chicken findChicken(String Intput_name){
+    boolean findOrNot = false;
+    for(int i = 0; i < chickenNum; i++){
+      if(Intput_name.equals(chicken.get(i).getName()){
+        findOrNot = true;
+        return chicken.get(i);
+      }
+    }
+    return null;
+  }
+
+  //檢察小雞是否死亡
+  public boolean isAlive(Chicken Intput_chicken){
+    if(Intput_chicken.getCondition() == 0){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
   //產生新小雞
   public void hatch(String Intput_name,String Intput_gender,String Intput_type){
-    if(chickenNum > 0){
-      boolean judge = true;
-      for(int i = 0; i < chickenNum; i++){
-        judge = Support.checkName(Intput_name,chicken.get(i).getName());
-        if(judge){
-          System.out.println("  姓名重複");
-          i = chickenNum;
-        }
-      }
-      if(!judge){
-        if(Support.checkGender(Intput_gender)){
-          if(Support.checkType(Intput_type)){
-            switch(Intput_type){
-              case "cook":
-               chicken.add(new Cook(Intput_name, Intput_gender, Intput_type));
-               break;
+    switch(Intput_type){
+      case "cook":
+       chicken.add(new Cook(Intput_name, Intput_gender, Intput_type));
+       break;
 
-              case "gatherer":
-               chicken.add(new Gatherer(Intput_name, Intput_gender, Intput_type));
-               break;
+      case "gatherer":
+       chicken.add(new Gatherer(Intput_name, Intput_gender, Intput_type));
+       break;
 
-              case "healer":
-               chicken.add(new Healer(Intput_name, Intput_gender, Intput_type));
-               break;
-            }
-            System.out.println(" ★一隻小雞誕生了");
-            chicken.get(chickenNum).getMessage();
-            chickenNum++;
-          }
-        }
-      }
+      case "healer":
+       chicken.add(new Healer(Intput_name, Intput_gender, Intput_type));
+       break;
     }
-
-    else{
-      if(Support.checkGender(Intput_gender)){
-        if(Support.checkType(Intput_type)){
-          switch(Intput_type){
-            case "cook":
-             chicken.add(new Cook(Intput_name, Intput_gender, Intput_type));
-             break;
-
-            case "gatherer":
-             chicken.add(new Gatherer(Intput_name, Intput_gender, Intput_type));
-             break;
-
-            case "healer":
-             chicken.add(new Healer(Intput_name, Intput_gender, Intput_type));
-             System.out.println("sss");
-             break;
-          }
-          System.out.println(" ★一隻小雞誕生了");
-          chicken.get(chickenNum).getMessage();
-          chickenNum++;
-        }
-      }
-    }
+    System.out.println(" ★一隻小雞誕生了");
+    chicken.get(chickenNum).getMessage();
+    chickenNum++;
   }
 
 
   //餵食
-  public void feed(String Intput_name){
-    if(chickenNum > 0){
-      int Label = -1;
-      for(int i = 0; i < chickenNum; i++){
-        Label = Support.findName(Intput_name,chicken.get(i).getName(),i);
-        if(Label != -1){
-          i = chickenNum;
-        }
-      }
-      if(Label != -1){
-        //死亡與否
-        if(chicken.get(Label).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label).getName() +"已死亡");
-        }
-        if(chicken.get(Label).feedRequire() < food){
-          food = food - chicken.get(Label).feed();
-          System.out.println("  食材存量:" + ingredient);
-          System.out.println("  食物存量:" + food);
-          chicken.get(Label).getMessage();
-        }
-
-        else{
-          System.out.println("  食物存量不足");
-        }
-      }
-      else{
-        System.out.println("  您沒有一隻叫做"+ Intput_name +"的小雞");
-      }
+  public void feed(Chicken Intput_chicken){
+    if(Intput_chicken.feedRequire() <= food){
+      food = food - Intput_chicken.feed();
+      System.out.println("  食材存量:" + ingredient);
+      System.out.println("  食物存量:" + food);
+      Intput_chicken.getMessage();
     }
-
     else{
-      System.out.println("  您沒有任何一隻小雞");
+        System.out.println("  食物存量不足");
     }
   }
 
 
   //跳舞
-  public void danceWith(String Intput_name){
-    if(chickenNum > 0){
-      int Label = -1;
-      for(int i = 0; i < chickenNum; i++){
-        Label = Support.findName(Intput_name,chicken.get(i).getName(),i);
-        if(Label != -1){
-          i = chickenNum;
-        }
-      }
-      if(Label != -1){
-        //死亡與否
-        if(chicken.get(Label).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label).getName() +"已死亡");
-        }
-        chicken.get(Label).danceWith();
-        chicken.get(Label).getMessage();
-      }
-      else{
-        System.out.println("  您沒有一隻叫做"+ Intput_name +"的小雞");
-      }
-    }
-
-    else{
-      System.out.println("  您沒有任何一隻小雞");
-    }
+  public void danceWith(Chicken Intput_chicken){
+    Intput_chicken.danceWith();
+    Intput_chicken.getMessage();
   }
 
 
   //野餐
-  public void picnic(String Intput_name){
-    if(chickenNum > 0){
-      int Label = -1;
-      for(int i = 0; i < chickenNum; i++){
-        Label = Support.findName(Intput_name,chicken.get(i).getName(),i);
-        if(Label != -1)
-        {
-          i = chickenNum;
-        }
-      }
-      if(Label != -1){
-        //死亡與否
-        if(chicken.get(Label).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label).getName() +"已死亡");
-        }
-        else{
-          if(chicken.get(Label).picnicRequire() < food){
-            food = food - chicken.get(Label).picnic();
-            System.out.println("  食材存量:" + ingredient);
-            System.out.println("  食物存量:" + food);
-            chicken.get(Label).getMessage();
-          }
-          else{
-            System.out.println("  食物存量不足");
-          }
-        }
-      }
-      else{
-        System.out.println("  您沒有一隻叫做"+ Intput_name +"的小雞");
-      }
+  public void picnic(Chicken Intput_chicken){
+    if(Intput_chicken.picnicRequire() < food){
+      food = food - Intput_chicken.picnic();
+      System.out.println("  食材存量:" + ingredient);
+      System.out.println("  食物存量:" + food);
+      Intput_chicken.getMessage();
     }
     else{
-      System.out.println("  您沒有任何一隻小雞");
+      System.out.println("  食物存量不足");
     }
   }
 
   //打架
-  public void fight(String Intput_name_1,String Intput_name_2){
-    if(chickenNum > 1){
-      int Label_1 = -1;
-      int Label_2 = -1;
-      for(int i = 0; i < chickenNum; i++){
-        Label_1 = Support.findName(Intput_name_1,chicken.get(i).getName(),i);
-        if(Label_1 != -1){
-          i = chickenNum;
-        }
-      }
-      for(int i = 0; i < chickenNum; i++){
-        Label_2 = Support.findName(Intput_name_2,chicken.get(i).getName(),i);
-        if(Label_2 != -1){
-          i = chickenNum;
-        }
-      }
-      if(Label_1 != -1 && Label_2 != -1){
-        //死亡與否
-        if(chicken.get(Label_1).getCondition() == 0 && chicken.get(Label_2).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label_1).getName() +"以及"+ chicken.get(Label_2).getName() +"已死亡");
-        }
-        else if(chicken.get(Label_1).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label_1).getName() +"已死亡");
-        }
-        else if(chicken.get(Label_2).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label_2).getName() +"已死亡");
-        }
-        else{
-          chicken.get(Label_1).fight(chicken.get(Label_2));
-          chicken.get(Label_1).getMessage();
-          chicken.get(Label_2).getMessage();
-        }
-      }
-      else if(Label_1 == -1 && Label_2 == -1){
-        System.out.println("  您沒有一隻叫做"+ Intput_name_1 +"的小雞");
-        System.out.println("  也沒有一隻叫做"+ Intput_name_2 +"的小雞");
-      }
-      else if(Label_1 == -1){
-        System.out.println("  您沒有一隻叫做"+ Intput_name_1 +"的小雞");
-      }
-      else if(Label_2 == -1){
-        System.out.println("  您沒有一隻叫做"+ Intput_name_2 +"的小雞");
-      }
-    }
-    else{
-      System.out.println("  小雞數量不足");
-    }
+  public void fight(Chicken Intput_chicken_1,Chicken Intput_chicken_2){
+    Intput_chicken_1.fight(Intput_chicken_2);
+    Intput_chicken_1.getMessage();
+    Intput_chicken_2.getMessage();
   }
 
-
   //求偶
-  public void mate(String Intput_name_1,String Intput_name_2){
-    if(chickenNum > 1){
-      int Label_1 = -1;
-      int Label_2 = -1;
-      for(int i = 0; i < chickenNum; i++){
-        Label_1 = Support.findName(Intput_name_1,chicken.get(i).getName(),i);
-        if(Label_1 != -1){
-          i = chickenNum;
-        }
-      }
-      for(int i = 0; i < chickenNum; i++){
-        Label_2 = Support.findName(Intput_name_2,chicken.get(i).getName(),i);
-        if(Label_2 != -1){
-          i = chickenNum;
-        }
-      }
-      if(Label_1 != -1 && Label_2 != -1){
-        //死亡與否
-        if(chicken.get(Label_1).getCondition() == 0 && chicken.get(Label_2).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label_1).getName() +"以及"+ chicken.get(Label_2).getName() +"已死亡");
-        }
-        else if(chicken.get(Label_1).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label_1).getName() +"已死亡");
-        }
-        else if(chicken.get(Label_2).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label_2).getName() +"已死亡");
-        }
-        else{
-          Chicken.mate(chicken.get(Label_1),chicken.get(Label_2));
-          chicken.get(Label_1).getMessage();
-          chicken.get(Label_2).getMessage();
-        }
-      }
-      else if(Label_1 == -1 && Label_2 == -1){
-        System.out.println("  您沒有一隻叫做"+ Intput_name_1 +"的小雞");
-        System.out.println("  也沒有一隻叫做"+ Intput_name_2 +"的小雞");
-      }
-      else if(Label_1 == -1){
-        System.out.println("  您沒有一隻叫做"+ Intput_name_1 +"的小雞");
-      }
-      else if(Label_2 == -1){
-        System.out.println("  您沒有一隻叫做"+ Intput_name_2 +"的小雞");
-      }
-    }
-    else{
-      System.out.println("  小雞數量不足");
-    }
+  public void mate(Chicken Intput_chicken_1,Chicken Intput_chicken_2){
+    Chicken.mate(Intput_chicken_1,Intput_chicken_2);
+    Intput_chicken_1.getMessage();
+    Intput_chicken_2.getMessage();
   }
 
 
   //生蛋
-  public void layEgg(String Intput_name){
-    if(chickenNum > 0){
-      int Label = -1;
-      for(int i = 0; i < chickenNum; i++){
-        Label = Support.findName(Intput_name,chicken.get(i).getName(),i);
-        if(Label != -1){
-          i = chickenNum;
-        }
-      }
-      if(Label != -1){
-        //死亡與否
-        if(chicken.get(Label).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label).getName() +"已死亡");
-        }
-        else{
-          //是否為母雞
-          if(chicken.get(Label).getGender().equals("male")){
-            System.out.println("  "+ chicken.get(Label).getName() +"為公雞，無法生蛋!!!");
-          }
-          else{
-            System.out.println("  獲得了一顆蛋!");
-            egg = egg + chicken.get(Label).layEgg();
-            chicken.get(Label).getMessage();
-          }
-        }
-      }
-      else{
-        System.out.println("  您沒有一隻叫做"+ Intput_name +"的小雞");
-      }
+  public void layEgg(Chicken Intput_chicken){
+    //是否為母雞
+    if(Intput_chicken.getGender().equals("male")){
+      System.out.println("  "+ Intput_chicken.getName() +"為公雞，無法生蛋!!!");
     }
     else{
-      System.out.println("  您沒有任何一隻小雞");
+      System.out.println("  獲得了一顆蛋!");
+      egg = egg + Intput_chicken.layEgg();
+      Intput_chicken.getMessage();
     }
   }
 
 
   //工作
-  public void work(String Intput_name){
-    if(chickenNum > 0){
-      int Label = -1;
-      for(int i = 0; i < chickenNum; i++){
-        Label = Support.findName(Intput_name,chicken.get(i).getName(),i);
-        if(Label != -1){
-          i = chickenNum;
-        }
-      }
-      if(Label != -1){
-        //死亡與否
-        if(chicken.get(Label).getCondition() == 0){
-          System.out.println("  "+ chicken.get(Label).getName() +"已死亡");
-        }
-        else{
-          switch(chicken.get(Label).getType()){
-            case "Gatherer":
-              System.out.println("  食材增加:"+ chicken.get(Label).work());
-              ingredient = chicken.get(Label).work(ingredient);
-              System.out.println("  食材存量:" + ingredient);
-              System.out.println("  食物存量:" + food);
-              System.out.println("");
-              chicken.get(Label).getMessage();
-              break;
+  public void work(Chicken Intput_chicken){
+      switch(Intput_chicken.getType()){
+        case "gatherer":
+          System.out.println("  食材增加:"+ Intput_chicken.work());
+          ingredient = Intput_chicken.work(ingredient);
+          System.out.println("  食材存量:" + ingredient);
+          System.out.println("  食物存量:" + food);
+          System.out.println("");
+          Intput_chicken.getMessage();
+          break;
 
-            case "Cook":
-              if(ingredient > 60){
-                ingredient = ingredient - 60;
-                System.out.println("  食物增加:"+ chicken.get(Label).work());
-                food = chicken.get(Label).work(food);
-                System.out.println("  食材存量:" + ingredient);
-                System.out.println("  食物存量:" + food);
-                System.out.println("");
-                chicken.get(Label).getMessage();
-              }
-              else{
-                System.out.println("  食材存量不足");      
-              }
-              break;
-
-            case "Healer":
-              for(int i = 0; i < chickenNum; i++){
-                if(i == Label){
-                  continue;
-                }
-                chicken.get(Label).heal(chicken.get(i));
-              }
-              chicken.get(Label).work();
-              chicken.get(Label).getMessage();
-              break;
+        case "cook":
+          if(ingredient > 60){
+            ingredient = ingredient - 60;
+            System.out.println("  食物增加:"+ Intput_chicken.work());
+            food = Intput_chicken.work(food);
+            System.out.println("  食材存量:" + ingredient);
+            System.out.println("  食物存量:" + food);
+            System.out.println("");
+            Intput_chicken.getMessage();
           }
-        }
+          else{
+            System.out.println("  食材存量不足");      
+          }
+          break;
+
+        case "healer":
+          for(int i = 0; i < chickenNum; i++){
+            if(i == Label){
+              continue;
+            }
+            Intput_chicken.heal(chicken.get(i));
+          }
+          Intput_chicken.work();
+          Intput_chicken.getMessage();
+          break;
       }
-      else{
-        System.out.println("  您沒有一隻叫做"+ Intput_name +"的小雞");
-      }
-    }
-    else{
-      System.out.println("  您沒有任何一隻小雞");
     }
   }
 

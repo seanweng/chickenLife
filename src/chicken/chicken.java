@@ -81,11 +81,9 @@ public class Chicken{
     if(gender.equals("male")){
       return 30;
     }
-
     else{
       return 20;
     }
-
   }
 
   //¸õ»R
