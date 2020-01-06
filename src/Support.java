@@ -1,23 +1,18 @@
-public class Support
-{
+public class Support{
 
   //檢查姓名
-  public static boolean checkName(String Intput_name,String Key_name)
-  {
-    if(Intput_name.equals(Key_name))
-    {
+  public static boolean checkName(String Intput_name,String Key_name){
+    if(Intput_name.equals(Key_name)){
       return true;
     }
-    else
-    {
+    else{
       return false;
     }
   }
 
 
   //檢查性別
-  public static boolean checkGender(String Intput_gender)
-  {
+  public static boolean checkGender(String Intput_gender){
     if(!Intput_gender.equals("male") && !Intput_gender.equals("female"))
     {
       System.out.println("  性別輸入錯誤");
