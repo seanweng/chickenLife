@@ -2,8 +2,12 @@ public class CommandProcessor{
 	private String [] Input_command;
 	private String commandType;
 	private int commandLength;
-	private ChickenCoop chickenCoop = new ChickenCoop();
+	private ChickenCoop chickenCoop;
 	private Invoker invoker = new Invoker();
+
+	public CommandProcessor(ChickenCoop chickenCoop){
+		this.chickenCoop = chickenCoop;
+	}
 
 	public Process(String Input_command){
 		this.Input_command = Input_command.split(" ");
@@ -41,9 +45,16 @@ public class CommandProcessor{
 			}
 			//執行
 			else{
-				invoker.addCommand(new Feed);
-				invoker.execute();
-				return true;
+				Feed feed = new Feed(chickenCoop);
+				feed.setCommand(Input_command[1],Input_command[2],Input_command[3])
+				if(feed.Check()){
+					invoker.addCommand(feed);
+					invoker.execute();
+					return true;
+				}
+				else{
+					return false;
+				}	
 			}
 
 
