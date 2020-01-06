@@ -1,7 +1,7 @@
-public class Feed extends Command{
+public class LayEgg extends Command{
 	Chicken chicken;
 
-	public Feed(ChickenCoop chickenCoop){
+	public LayEgg(ChickenCoop chickenCoop){
 		this.chickenCoop = chickenCoop;
 	}
 	public void setCommand(String name){
@@ -16,6 +16,6 @@ public class Feed extends Command{
 		return false;
 	}
     public void execute(){
-    	chickenCoop.feed(chicken);
+    	chickenCoop.layEgg(chicken);
     }
 }

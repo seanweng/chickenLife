@@ -12,7 +12,7 @@ public class Hatch extends Command{
 		this.type = type;
 	}
 	public boolean Check(){
-		if(chickenCoop.findChicken(name) == null){
+		if(chicken == null){
 			if(Support.checkGender(gender) && Support.checkType(type)){
 				return true;
 			}
